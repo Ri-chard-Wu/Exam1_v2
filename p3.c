@@ -41,8 +41,8 @@ void compute_avg(){
 
 void record(void) {
    BSP_ACCELERO_AccGetXYZ(pDataXYZ);
-   X[i_s++] = pDataXYZ[0];
-   Y[i_s++] = pDataXYZ[1];
+   X[i_s] = pDataXYZ[0];
+   Y[i_s] = pDataXYZ[1];
    Z[i_s++] = pDataXYZ[2];
    if(i_s == 10){
        i_s = 0;
@@ -78,3 +78,5 @@ int main() {
    btnRecord.rise(queue.event(stopRecord));
 
 }
+
+
