@@ -56,6 +56,10 @@ Thread t;
 
 
 int16_t pDataXYZ[3] = {0};
+
+int16_t x0 = 0,y0 = 0,z0 = 0;
+int16_t x = 0,y=0,z=0;
+int16_t dx = 0,dy=0,dz=0;
 int16_t X[10] = {0};
 int16_t Y[10] = {0};
 int16_t Z[10] = {0};
@@ -64,7 +68,7 @@ int idR[32] = {0};
 int indexR = 0;
 
 void compute_avg(){
-    int x = 0,y=0,z=0;
+    
     for(int i =0;i<10;i++){
         x+=X[i];
         y+=Y[i];
@@ -73,7 +77,11 @@ void compute_avg(){
     x  = x/10;
     y  = y/10;
     z  = z/10;
-    printf("%d, %d, %d\n", x, y, z);
+
+    int16_t dot = x*x0 + y*y0 + z*z0;
+    int16_t mag_product = sqrt(x*x+y*y+z*z) * sqrt(x0*x0+y0*y0+z0*z0);
+    float angle = acos((float)dot/mag_product);
+    printf("%f\n", angle);
     
 }
 
